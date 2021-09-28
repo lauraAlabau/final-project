@@ -19,5 +19,7 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
-  }
+  },
+  "homepage": "https://final-project-boilerplate.herokuapp.com/"
+
 }
