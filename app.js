@@ -8,11 +8,6 @@ const { isAuthenticated } = require("./middleware/jwt.middleware"); // <== IMPOR
 const app = express();
 require("./config")(app);
 
-app.use((req, res, next) => {
-    // If no routes match, send them the React HTML.
-    res.sendFile(__dirname + "/public/index.html");
-  });
-
 
 // 👇 Start handling routes here
 const allRoutes = require("./routes");
@@ -27,6 +22,11 @@ app.use("/api", isAuthenticated, taskRouter);            // <== UPDATE
 const authRouter = require("./routes/auth.routes");
 app.use("/api/auth", authRouter);
 
-require("./error-handling")(app);
+app.use((req, res, next) => {
+    // If no routes match, send them the React HTML.
+    res.sendFile(__dirname + "/public/index.html");
+  });
+
+// require("./error-handling")(app);
 
 module.exports = app;
