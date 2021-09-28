@@ -25,7 +25,7 @@ const taskRouter = require("./routes/task.routes");
 app.use("/api", isAuthenticated, taskRouter);            // <== UPDATE
 
 const authRouter = require("./routes/auth.routes");
-app.use("/auth", authRouter);
+app.use("/api/auth", authRouter);
 
 require("./error-handling")(app);
 
