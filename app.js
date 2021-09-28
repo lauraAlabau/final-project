@@ -13,14 +13,15 @@ require("./config")(app);
 const allRoutes = require("./routes");
 app.use("/api", allRoutes);
 
+const authRouter = require("./routes/auth.routes");
+app.use("/api/auth", authRouter);
+
 const projectRouter = require("./routes/project.routes");
 app.use("/api", isAuthenticated, projectRouter);            // <== UPDATE
 
 const taskRouter = require("./routes/task.routes");
 app.use("/api", isAuthenticated, taskRouter);            // <== UPDATE
 
-const authRouter = require("./routes/auth.routes");
-app.use("/api/auth", authRouter);
 
 app.use((req, res, next) => {
     // If no routes match, send them the React HTML.
